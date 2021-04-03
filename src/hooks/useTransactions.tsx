@@ -1,5 +1,6 @@
 import { createContext, useState, useContext, ReactNode } from 'react';
-import { api } from '../services/api';
+// import { api } from '../services/api';
+import nextId from 'react-id-generator';
 
 interface Transaction {
   id: number;
@@ -35,12 +36,19 @@ export function TransactionProvider({children}: TransactionProviderProps ) {
 
 
   async function createTransaction(transactionInput: TransactionInput) {
-    const response = await api.post("/transactions", {
+    /* const response = await api.post("/transactions", {
       ...transactionInput,
       createdAt: new Date()
     });
+    */
 
-    const { transaction } = response.data;
+    const transaction = {
+      id: Number(nextId()),
+      ...transactionInput,
+      createdAt: String(new Date()),
+    }
+
+    // const { transaction } = response.data;
 
     setTransactions([...transactions, transaction])
 

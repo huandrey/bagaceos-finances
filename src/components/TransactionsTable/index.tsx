@@ -29,11 +29,7 @@ export function TransactionTable() {
               }).format(transaction.amount) || 0}
               </td>
               <td>{transaction.category}</td>
-              <td>
-                {new Intl.DateTimeFormat('pt-BR').format(
-                  new Date(transaction.createdAt))
-                }
-              </td>
+              
               <td>
                 <FaTrash onClick={() => removeTransaction(transaction.id)} color="#E52E4D" />
               </td>
