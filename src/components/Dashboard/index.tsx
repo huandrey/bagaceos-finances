@@ -5,12 +5,10 @@ import { TransactionTable } from "../TransactionsTable";
 import { Container } from './styles';
 
 export function Dashboard() {
-  const { transactions } = useTransactions(); 
   return (
     <Container>
       <Summary />
       <TransactionTable />
-      
     </Container>
   )
 }
